@@ -1,4 +1,4 @@
-body {
-    background-color: green;
+body.app1 {
+    background-color: blue;
     color: white;
 }

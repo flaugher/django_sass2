@@ -1,14 +1,16 @@
 {% load static %}
+{% load pipeline %}
 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'app2/app2.css'%}">
   <title>App2</title>
+  {% stylesheet 'basecss' %}
 </head>
-<body>
+<body class='app2'>
   <h1>App2</h1>
   <p>This is app2</p>
 </body>
+{% javascript 'basejs' %}
 </html>

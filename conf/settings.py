@@ -119,9 +119,47 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+# When the STATIC_URL appears in a template, Django should link to the STATIC_ROOT location.
 STATIC_URL = '/static/'
 STATIC_ROOT = '/Users/flaugher/projects/django/django_sass2/static/'
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
+
+# Django-pipeline
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_FINDERS.append('pipeline.finders.PipelineFinder')
+
+PIPELINE = {
+    # Default: not settings.DEBUG
+    #'PIPELINE_ENABLED': True,
+    'STYLESHEETS': {
+        'basecss': {
+            'source_filenames': (
+                'app2/app2.css',
+                'app1/app1.css',
+            ),
+            'output_filename': 'css/styles.css',
+        },
+    },
+    'JAVASCRIPT': {
+        'basejs': {
+            'source_filenames': (
+                'app1/app1.js',
+                'app2/app2.js',
+            ),
+            'output_filename': 'js/base.js',
+        }
+    }
+}
+
+INSTALLED_APPS.append('pipeline')
+
+
+# Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
