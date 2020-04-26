@@ -25,7 +25,7 @@ SECRET_KEY = 'lr%zy%w$%#rc)yqg(*9^z3n@#*k(rq_-jzp_&b!-fudr5znet-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', ]
 
 
 # Application definition
@@ -121,3 +121,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/Users/flaugher/projects/django/django_sass2/static/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/Users/flaugher/projects/django/django_sass2/logs/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

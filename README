@@ -1,0 +1,19 @@
+
+
+## npm
+
+    npm init --yes
+
+    # Note that this installs yuglify in 'dependencies'.  If you were to
+    # specify "--save-dev" it would go in the (development) 'devDependencies'
+    # section instead.
+    # Note also that if you want to install yugligy globally, you'd use the
+    # '--global' argument.
+
+    npm i[nstall] yuglify
+
+    # Check if package installed
+    npm search yuglify
+
+    # List all packages
+    npm list [ --local | --global ]
