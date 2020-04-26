@@ -5,6 +5,27 @@
 Create a venv at the same level as this project folder. Also, create a static
 files directory at the this same level for STATIC_ROOT.
 
+## Setting up Sass in VS Code
+
+1. Install Live Sass Compiler extension.
+2. Go to settings and search for the Live Sass Compiler.
+3. Look for Settings: Formats.  Edit the settings.
+4. Configure the settings the way you want them.
+    Put .css files in same directory as the .sass file it came from.
+    Don't compress CSS.  Let Yuglify do that.
+
+        "liveSassCompile.settings.formats":[
+            {
+                "format": "expanded",
+                "extensionName": ".css",
+                "savePath": null
+            }
+        ],
+
+When you're ready to start monitoring Sass compilations, click 'Watch Sass' in the bottom menu bar.
+
+While you would normally install the Live Server extension and click the 'Go Live' button in the menu bar to monitor how your CSS changes as you edit your .scss files, with Django you don't do that.  Just run the Django server in development mode (DEBUG = True) and go to 'http://127.0.0.1:8000/appname'.   Interestingly, the Sass compiler seems to run the 'collectstatic' command for you or it understands that the compiled .css files should go in STATIC_ROOT as I don't seem to need to run the collectstatic command.  The Live Sass Compiler puts the .css files where I want them automatically.
+
 ## Using django-pipeline to minify and cache-bust static files
 
 I believe this site is configured correctly to run django-pipline.  Remember these key points:
