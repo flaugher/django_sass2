@@ -1,4 +1,7 @@
+@import '../../../static/css/resets';
+@import '../../../static/css/variables';
+
 body.app2 {
-    background: green;
+    background: $secondary-color;
     color: white;
 }
