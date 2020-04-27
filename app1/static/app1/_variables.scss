@@ -1,0 +1,8 @@
+$primary-color: blue;
+$text-color: white;
+// This is a Sass "map".   It's like a Python dictionary.
+$font-weights: (
+    "regular": 400,
+    "medium": 500,
+    "bold": 700
+);

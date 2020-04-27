@@ -1,4 +1,44 @@
-body.app1 {
-    background: black;
-    color: white;
+@import './resets';
+@import './variables';
+
+// Example: Interpolation
+// See t.ly/QMEc
+// Could put in a _config.scss file
+$colors: (
+    "primary": blue,
+    "secondary": green,
+);
+// Could put in a _function.scss file
+@function color($key) {
+    @if not map-has-key($colors, key) {
+        @warn "Key `#{key}` not found in $colors map.";
+    }
+    @return map-get($colors, $key);
+}
+// Could put in an _component.scss file
+.el {
+    background-color: color(secondary);
+}
+// End example
+
+body {
+    background: $primary-color;
+    color: $text-color;
+}
+
+.main {
+    width: 80%;
+    margin: 0 auto;
+    // Don't do too much nesting.  Better to build reusable styles.
+
+    // Use & instead of repeating ".main".  "&" = the parent.
+    // Use interpolation too so you get ".main .main__paragraph" instead of just ".main__paragraph".
+    //.main__paragraph {
+    #{&}__paragraph {
+        font-weight: map-get($font-weights, medium);
+    }
+
+    &:hover {
+        color: pink;
+    }
 }
