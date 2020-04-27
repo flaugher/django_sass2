@@ -1,3 +1,4 @@
+@import '../../../static/css/functions';
 @import '../../../static/css/resets';
 @import '../../../static/css/variables';
 
@@ -35,7 +36,7 @@ body {
     // Use interpolation too so you get ".main .main__paragraph" instead of just ".main__paragraph".
     //.main__paragraph {
     #{&}__paragraph {
-        font-weight: map-get($font-weights, medium);
+        font-weight: weight(regular);
     }
 
     &:hover {
