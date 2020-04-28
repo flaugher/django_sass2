@@ -1,0 +1,12 @@
+
+Do not delete this project!  It demonstrates how to create a Django project
+that uses django-pipeline to cache-bust and minify static files.  It also
+demonstrates both how add Sass to the project and the basics of using Sass.
+
+As it turns out, once you have django-pipeline working and you install the Live
+Sass Compiler into VS Code, configure it properly, and set up your static
+directory structure, putting your .scss files alongside the .css files, Django,
+django-pipeline, and Sass appear to work pretty seamlessly together.  Once you
+configure Sass properly, it seemed that I didn't even need to run the
+collectstatic command; Sass would automatically put the new .css output files
+where they needed to go.

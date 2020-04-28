@@ -1,30 +1,12 @@
+# README
+
+These are notes on how to use django-pipeline and Sass together.  django-pipeline allows you to minify and cache-bust your static files.  Sass gives you the ability to use variables, partial files, mixins, functions, and math operations to create your CSS stylesheets.
 
 
-## Directory structure
+## Project directory structure
 
-Create a venv at the same level as this project folder. Also, create a static
-files directory at the this same level for STATIC_ROOT.
+Create a venv at the same level as this project folder. Also, create a static files directory at the this same level for STATIC_ROOT.
 
-## Setting up Sass in VS Code
-
-1. Install Live Sass Compiler extension.
-2. Go to settings and search for the Live Sass Compiler.
-3. Look for Settings: Formats.  Edit the settings.
-4. Configure the settings the way you want them.
-    Put .css files in same directory as the .sass file it came from.
-    Don't compress CSS.  Let Yuglify do that.
-
-        "liveSassCompile.settings.formats":[
-            {
-                "format": "expanded",
-                "extensionName": ".css",
-                "savePath": null
-            }
-        ],
-
-When you're ready to start monitoring Sass compilations, click 'Watch Sass' in the bottom menu bar.
-
-While you would normally install the Live Server extension and click the 'Go Live' button in the menu bar to monitor how your CSS changes as you edit your .scss files, with Django you don't do that.  Just run the Django server in development mode (DEBUG = True) and go to 'http://127.0.0.1:8000/appname'.   Interestingly, the Sass compiler seems to run the 'collectstatic' command for you or it understands that the compiled .css files should go in STATIC_ROOT as I don't seem to need to run the collectstatic command.  The Live Sass Compiler puts the .css files where I want them automatically.
 
 ## Using django-pipeline to minify and cache-bust static files
 
@@ -41,6 +23,7 @@ I believe this site is configured correctly to run django-pipline.  Remember the
         urlpatterns += staticfiles_urlpatterns()
 
     See [How to make Django serve static files with Gunicorn?](https://stackoverflow.com/questions/12800862/how-to-make-django-serve-static-files-with-gunicorn)
+
 
 ## Using django-pipeline template tags
 
@@ -81,6 +64,7 @@ If DEBUG = False, a 'css/styles.css' stylesheet will be created when you run 'co
 
 See django-pipeline [Templatetags](https://django-pipeline.readthedocs.io/en/latest/usage.html#templatetags)
 
+
 ## Running npm to install Yuglify
 
 django-pipeline requires Yuglify.
@@ -107,7 +91,63 @@ django-pipeline requires Yuglify.
     npm list [ --local | --global ]
 
 
+## Setting up Sass in VS Code
+
+1. Install Live Sass Compiler extension.
+2. Go to settings and search for the Live Sass Compiler.
+3. Look for Settings: Formats.  Edit the settings.
+4. Configure the settings the way you want them.  For example,
+
+    Put .css files in same directory as the .sass file it came from.
+    Don't compress CSS.  Let Yuglify do that.
+
+        "liveSassCompile.settings.formats":[
+            {
+                "format": "expanded",
+                "extensionName": ".css",
+                "savePath": null
+            }
+        ],
+        "liveSassCompile.settings.generateMap": false,
+
+When you're ready to start monitoring Sass compilations, click 'Watch Sass' in the bottom menu bar.
+
+While you would normally install the Live Server extension and click the 'Go Live' button in the menu bar to monitor how your CSS changes as you edit your .scss files, with Django you don't do that.  Just run the Django server in development mode (DEBUG = True) and go to 'http://127.0.0.1:8000/appname'.   Interestingly, the Sass compiler seems to run the 'collectstatic' command for you or it understands that the compiled .css files should go in STATIC_ROOT as I don't seem to need to run the collectstatic command.  The Live Sass Compiler puts the .css files where I want them automatically.
+
+
+## Django/Sass directory structure
+
+In general, put each distinct application's .css and .scss files in the app's static directory.  Put all global static files (especially global Sass variables, mixins, functions and the like) in a global 'static' directory in the project's root directory.
+
+    # Per app
+    app1
+        static
+            app1
+                app1.css
+                app1.scss
+                app1.scss
+                _mixins.scss
+                _variables.scss
+                _functions.scss
+                ...
+    app2
+        static
+            app2
+                app2.css
+                app2.scss
+                app2.scss
+    # Global
+    static
+        css
+            _functions.scss
+            _mixins.scss
+            _resets.scss
+            _variables.scss
+        js
+
+
 ## References
 
+YouTube [Sass Tutorial for Beginners - CSS With Superpowers](https://www.youtube.com/watch?v=_a5j7KoflTs) -- I learned Sass from this video.  It was pretty good.
 [Using SASS partials](https://dev.to/sarah_chima/using-sass-partials-7mh)
 [Working with partials, manifests and globbing](https://anotheruiguy.gitbooks.io/sassintherealworld_book-i/aLittleUnderTheHood/partials.html)
