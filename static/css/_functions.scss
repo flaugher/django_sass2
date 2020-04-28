@@ -1,5 +1,7 @@
 @import './variables';
 
+// Functions should be used to compute and return values.
+
 @function weight($weight-name) {
     @return map-get($font-weights, $weight-name);
 }

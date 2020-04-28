@@ -1,4 +1,5 @@
 @import '../../../static/css/functions';
+@import '../../../static/css/mixins';
 @import '../../../static/css/resets';
 @import '../../../static/css/variables';
 
@@ -28,6 +29,8 @@ body {
 }
 
 .main {
+    @include flexCenter(row);
+
     width: 80%;
     margin: 0 auto;
     // Don't do too much nesting.  Better to build reusable styles.
@@ -42,4 +45,17 @@ body {
     &:hover {
         color: pink;
     }
+
+    // This substitutes for a media query.
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+.light {
+    @include theme($light-theme: true);
+}
+
+.dark {
+    @include theme($light-theme: false);
 }

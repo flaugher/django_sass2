@@ -1,0 +1,22 @@
+// Use mixins to insert code in multiple places.  They should only be used to
+// define styles.  They keep your CSS DRY.
+@mixin flexCenter($direction) {
+    // flexbox
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin theme($light-theme: true) {
+    @if $light-theme {
+        background-color: lighten($color: $primary-color, $amount: 100%);
+        color: darken($color: $text-color, $amount: 100%);
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}

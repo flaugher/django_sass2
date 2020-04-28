@@ -105,3 +105,9 @@ django-pipeline requires Yuglify.
 
     # List all packages
     npm list [ --local | --global ]
+
+
+## References
+
+[Using SASS partials](https://dev.to/sarah_chima/using-sass-partials-7mh)
+[Working with partials, manifests and globbing](https://anotheruiguy.gitbooks.io/sassintherealworld_book-i/aLittleUnderTheHood/partials.html)
