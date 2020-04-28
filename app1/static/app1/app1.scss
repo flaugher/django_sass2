@@ -31,7 +31,10 @@ body {
 .main {
     @include flexCenter(row);
 
-    width: 80%;
+    // You can do math calculations.
+    width: 80% - 5%;
+    // But you can't mix types!
+    // width: 80% - 50px;   WRONG!
     margin: 0 auto;
     // Don't do too much nesting.  Better to build reusable styles.
 

@@ -28,7 +28,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
 }
 
