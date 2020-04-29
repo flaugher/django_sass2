@@ -134,8 +134,9 @@ STATICFILES_DIRS = [
 
 # Django-pipeline
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+INSTALLED_APPS.append('pipeline')
 STATICFILES_FINDERS.append('pipeline.finders.PipelineFinder')
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 PIPELINE = {
     # Default: not settings.DEBUG
@@ -159,8 +160,6 @@ PIPELINE = {
         }
     }
 }
-
-INSTALLED_APPS.append('pipeline')
 
 
 # Logging
